@@ -1,0 +1,9 @@
+drwxr-xr-x  20 x  staff   680B Oct 12 18:18 MySensors
+drwxr-xr-x   9 x  staff   306B Sep 25 21:23 Plotter
+drwxr-xr-x   9 x  staff   306B Sep 25 19:14 SimpleDHT
+drwxr-xr-x  10 x  staff   340B Sep 25 19:12 DHT_sensor_library
+drwxr-xr-x   9 x  staff   306B Sep 25 18:10 i2cdetect
+drwxr-xr-x   5 x  staff   170B Sep 25 18:09 Adafruit_Unified_Sensor
+drwxr-xr-x   7 x  staff   238B Sep 25 18:06 Adafruit_BMP280_Library
+drwxr-xr-x  23 x  staff   782B Aug  9 23:29 RF24
+
