@@ -1,0 +1,10 @@
+I was not able to get reliable data out of this unit.
+Simply reading with the analog pins gives contant numbers whether using 1 or 2 out pins.
+There were some changes in the values when I used a compressed air can to blow on the unit.
+Probably the my calculation was bad, so yeah, try again some later time.
+
+TODO read with digital pins
+Also, it might matter what voltage you input, it will adjust the output voltage as well. Make sure logic levels match.
+Also, power it from a clean power source, to avoid any noise to alter our results.
+
+Figure out test cases, like frying oil should put particles in air :D

@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0056)http://www.howmuchsnow.com/arduino/airquality/grovedust/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+Monitoring your Air Quality
+</title>
+  
+                        
+<meta http-equiv="Refresh" content="360">
+<meta http-equiv="Description" name="Description" content="air quality monitoring">
+<meta http-equiv="Keywords" name="Keywords" content="Chris Nafis, dylos, sharp, seeed, shinyei, PPD42NS, particle, pachube, air, quality, monitoring, arduino, uno, ethernet,crowd sourced, green, EPA">
+<meta name="author" content="Christopher Nafis">
+<meta name="copyright" content="©2012 Christopher Nafis">
+</head>
+
+<body>
+<h1>Air Quality Monitoring</h1>
+Automatically measuring and graphing Air Quality with an inexpensive device (Shinyei Model PPD42NS Dust Sensor)
+<br>
+Copyright 2012, Chris Nafis
+<p>
+<a href="./Monitoring your Air Quality_files/100_1402a.jpg"><img src="./Monitoring your Air Quality_files/100_1402a.jpg" height="250"></a>
+<a href="./Monitoring your Air Quality_files/dustsensor2.jpg"><img src="./Monitoring your Air Quality_files/dustsensor2.jpg" height="250"></a>
+<a href="./Monitoring your Air Quality_files/100_1406a.jpg"><img src="./Monitoring your Air Quality_files/100_1406a.jpg" height="250"></a>
+</p><p>
+<img src="./Monitoring your Air Quality_files/0.png">
+</p><p>
+<img src="./Monitoring your Air Quality_files/1.png">
+</p><p>
+<img src="./Monitoring your Air Quality_files/0(1).png">
+</p><p>
+
+</p><h3>Table of Contents</h3>
+<ul>
+<li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#background">Background</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#monitoring">Monitoring</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#approach">Approach</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#materials">Project Materials</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#results">Results</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#references">References</a>
+</li><li>
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/#disclaimer">Disclaimer</a>
+</li></ul>
+
+<hr>
+<a name="background"></a>
+<h2>Background</h2>
+With allergies and asthma I'm interested in both the indoor and outdoor air quality. I heat with a 
+<a href="http://www.quadrafire.com/Products/3100-Millennium-Wood-Stove.aspx">Quadrafire</a> woodstove. It is suppose to be a clean stove. I was interested in the impact on both
+my inside air (ie. ash/dust) and outside air (smoke).
+New York State 
+<a href="http://www.dec.ny.gov/chemical/65574.html">monitors the air quality</a>
+ at several locations around the State.
+Certified Allergy &amp; Asthma Consultants in Albany NY published daily
+<a href="http://www.certifiedallergy.com/statisticsframe.html">pollen counts</a>.
+The American Lung Association has a great article called
+<a href="http://www.stateoftheair.org/2011/health-risks/health-risks-particle.html">State of the AIR</a>
+that talks about Particle Pollution.
+I have several weatherstations collecting data (
+<a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNYREXFO1">KNYREXFO1 [barn roof]</a>,
+<a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNYCLIFT1">KNYCLIFT1 [garage roof]</a>
+),
+<p>
+There are several citizen group projects that are developing open source equipment (e.g.
+<a href="http://airqualityegg.wikispaces.com/">Air Quality Egg</a>).
+There are several 
+<a href="http://groups.google.com/group/airqualityegg/browse_thread/thread/75ce554d7ed5f322/6abf345082d77f25?lnk=gst&amp;q=gustavo#6abf345082d77f25">recent discussions about adding a Particulate sensor</a>.
+The Egg Project aims to give citizens a way to participate in the conversation about air quality. It is composed of a sensing device that measures the air quality in the immediate environment and an on-line community that is sharing this information in real-time.
+ It is a community-developed, open source project that is driven by people who care about the air they breathe.
+ 
+
+
+</p><hr>
+<a name="monitoring"></a>
+<h2>Monitoring</h2>
+The $290
+<a href="http://www.dylosproducts.com/dcproairqumo.html">DC1100 Pro Air Quality</a>
+is a true Laser Particle Counter with two different size ranges. The small channel (0.5&gt; Micron) should see bacteria and mold. 
+The Large channel (2.5&gt; micron) should see dust and pollen.
+The LCD display constantly shows bargraphs and values for the small and large particles. The
+unit saves 30 days of air quality data.
+
+I ordered the unit with the PC Interface Option and connected it to an Arduino Ethernet so I can automatically
+log the data to 
+<a href="https://pachube.com/feeds/55522">Pachube</a>. 
+That way air quality alerts can be triggered and sent to twitter and my cell phone.
+
+<p>
+<a href="./Monitoring your Air Quality_files/100_1369.jpg"><img src="./Monitoring your Air Quality_files/100_1369.jpg" height="250"></a>
+<img src="./Monitoring your Air Quality_files/housetweet.jpg">
+</p><p>
+</p><p>
+The unit is amazingly sensitive. It easily sees the dust kicked up from walking on a rug or the vapors from cooking.
+Looking at the graphs below you can see some interesting things. First you can see that things settle down at night
+when people are not walking around. You can see around noon that my daughter cooked lunch. It's surprising how
+long it takes for the fine particles to settle down.
+</p><p>
+<img src="./Monitoring your Air Quality_files/airquality1.jpg">
+<br>
+<img src="./Monitoring your Air Quality_files/airquality2.jpg">
+</p><p>
+
+
+
+</p><hr>
+<a name="approach"></a>
+<h2>Approach</h2>
+
+<h3>Set Up</h3>
+The hardware set-up is very easy. If you order the Grove Shield, you just need to put the stacking headers on the Arduino Ethernet and install the shield.
+Plug the Grove dust connector into Digital Port 8. Without the shield, you can just cut the 4-pin connector off, and solder header pins to the wires.
+<pre>JST Pin 1 (Black Wire)  =&gt; Arduino GND
+JST Pin 3 (Red wire)    =&gt; Arduino 5VDC
+JST Pin 4 (Yellow wire) =&gt; Arduino Digital Pin 8
+</pre>
+<a href="http://www.sca-shinyei.com/pdf/PPD42NS.pdf"><img src="./Monitoring your Air Quality_files/signal.jpg" height="250">PPD42NS Spec. Sheet</a>
+<p>
+The interface is fairly simple. You just measure how long the digital signal on Pin 8 is low during the 30 second sample time.
+This ratio is used in a transfer function to calculate the particles per 0.01 cubic feet.
+
+</p><h3>Software</h3>
+
+The Arduino 
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/grovedust.ino">grovedust.ino</a> sketch demonstrates reading the Grove sensor and printing the
+low pulse duration, the ratio, and estimated particles per 0.01 cubic feet.
+The 
+<a href="http://www.howmuchsnow.com/arduino/airquality/grovedust/grovedustpachube.ino">grovedustpachube.ino</a> sketch sends the estimated particles per 0.01 cubic feet and the
+low pulse ratio to a Pachube feed. You need to edit this sketch to use your own feed id and key.
+
+<pre>/*
+ Interface to Shinyei Model PPD42NS Particle Sensor
+ Program by Christopher Nafis 
+ Written April 2012
+ 
+ http://www.seeedstudio.com/depot/grove-dust-sensor-p-1050.html
+ http://www.sca-shinyei.com/pdf/PPD42NS.pdf
+ 
+ JST Pin 1 (Black Wire)  =&gt; Arduino GND
+ JST Pin 3 (Red wire)    =&gt; Arduino 5VDC
+ JST Pin 4 (Yellow wire) =&gt; Arduino Digital Pin 8
+ */
+
+int pin = 8;
+unsigned long duration;
+unsigned long starttime;
+unsigned long sampletime_ms = 30000;
+unsigned long lowpulseoccupancy = 0;
+float ratio = 0;
+float concentration = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(8,INPUT);
+  starttime = millis();
+}
+
+void loop() {
+  duration = pulseIn(pin, LOW);
+  lowpulseoccupancy = lowpulseoccupancy+duration;
+
+  if ((millis()-starttime) &gt; sampletime_ms)
+  {
+    ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=&gt;100
+    concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
+    Serial.print(lowpulseoccupancy);
+    Serial.print(",");
+    Serial.print(ratio);
+    Serial.print(",");
+    Serial.println(concentration);
+    lowpulseoccupancy = 0;
+    starttime = millis();
+  }
+}
+</pre>
+
+<h3>Calibration</h3>
+I digitized the 
+<a href="http://www.sca-shinyei.com/pdf/PPD42NS.pdf">Spec. Sheet</a> Characteristic Chart
+and fit a cubic polynomial to it. I got the following equation:
+<pre>y = 1.1x^3 - 3.8x^2 + 520x + 0.62
+
+</pre>
+<a href="http://www.sca-shinyei.com/pdf/PPD42NS.pdf"><img src="./Monitoring your Air Quality_files/lowpulseoccupancygraph.jpg" height="300"></a>
+<a href="./Monitoring your Air Quality_files/dustcurve.jpg"><img src="./Monitoring your Air Quality_files/dustcurve.jpg" height="300"></a>
+
+<h3>Testing</h3>
+My previous experience showed that cooking puts a lot of particulates into the air. So for a quick test, I
+fried some bacon on the stove and logged the results from the two sensors.
+I need to get more data from normal days. The Dylos is very sensitive at low particle counts. 
+The 
+<a href="http://www.howmuchsnow.com/arduino/airquality/">Sharp Dust Sensor</a>
+using the Arduino A/D turned out not to be too sensitive to low levels.
+<p>
+<img src="./Monitoring your Air Quality_files/100_1396a.jpg" height="250"> The Fry pan Bacon test :-)
+</p><p>
+<img src="./Monitoring your Air Quality_files/graphcompare.jpg">
+
+</p><hr>
+<a name="materials"></a>
+<h2>Materials</h2>
+
+<ul>
+<li>
+<a href="http://www.seeedstudio.com/depot/grove-dust-sensor-p-1050.html">Seeed Grove - Dust Sensor</a> $15.50
+</li><li>
+<a href="http://www.seeedstudio.com/depot/grove-base-shield-p-754.html?cPath=132">Seeed Grove - Base Shield</a> $9.90 (not required)
+</li><li>
+<a href="http://adafruit.com/products/418">Arduino Uno Ethernet</a> $65
+</li><li>
+<a href="https://www.adafruit.com/products/63">9VDC Arduino power adapter</a> $6.95
+</li><li>
+<a href="http://www.adafruit.com/products/85">Shield stacking headers for Arduino</a> $1.50
+</li><li>
+<a href="https://www.adafruit.com/products/400">Extra-long break-away 0.1" 16-pin strip male header</a> $3
+</li></ul>
+
+<hr>
+<a name="results"></a>
+<h2>Results</h2>
+
+Other types of real-time data have sites that users can share their data with the global 
+Internet Community. For example,
+<a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNYREXFO1">Weather Underground</a>
+is a great place to store my weatherstation data. 
+<a href="http://www.strikestarus.com/index.aspx?id=40">StrikeStar</a> is wonderful for processing
+distributed lightning detectors data to produce real-time maps.
+<p>
+<a href="http://pachube.com/">Pachube ("patch-bay")</a> connects people to devices, applications, 
+and the Internet of Things. 
+As a web-based service built to manage the world's real-time data, 
+Pachube gives people the power to share, collaborate, 
+and make use of information generated from the world around them.
+</p><p>
+This is a perfect repository for our 
+<a href="https://pachube.com/feeds/55522">Dylos Air Quality</a>,
+<a href="https://pachube.com/feeds/56469">Shinyei Air Quality</a>,
+and
+<a href="https://pachube.com/feeds/49544">Radon</a> data.
+It provides a simple HTTP interface to post data and applications which generate charts that can be
+included on your web pages:
+
+
+</p><hr>
+<a name="references"></a>
+<h2>References</h2>
+<h3>Articles</h3>
+<ul>
+<li>
+<a href="http://cires.colorado.edu/jimenez/AtmChem/CHEM-5151_S05_L16.pdf">Lecture on Aerosol Light Scattering and Cloud Nucleation</a>
+</li><li>
+<a href="http://www.cs.cmu.edu/~sk1/publications/chi10.pdf">inAir: Sharing Indoor Air Quality Measurements and Visualizations</a>
+</li><li>
+<a href="https://docs.google.com/viewer?a=v&amp;pid=forums&amp;srcid=MTA5MDk1MzA2NDkwMDYzNDE5NTgBMTI5MzYyNTk3NjU0Nzc2NDY1NDkBNjgxNjUwNy4xNjcyLjEzMzM4ODEyNTA1NzYuSmF2YU1haWwuZ2VvLWRpc2N1c3Npb24tZm9ydW1zQHBidnMxMAE0AQ&amp;authuser=0">Development of a low-cost device for observing indoor particle levels associated with source activities in the home</a>
+</li><li>
+<a href="https://groups.google.com/forum/#!msg/airqualityegg/YInTjnSuloQ/J38LwFYghOsJ">Air Egg Particle discussion</a>
+</li><li>
+<a href="http://www.cleanair.org/sites/default/files/Drexel%20Air%20Monitoring_-_Final_Report_-_Team_19_0.pdf">
+Preliminary Screening System for Ambient Air Quality in Southeast Philadelphia</a>
+</li></ul>
+
+<h3>Sharp Sensor</h3>
+<ul>
+<li>
+<a href="http://www.sparkfun.com/datasheets/Sensors/gp2y1010au_e.pdf">Sharp GP2Y1010AU0F Spec sheet</a>
+</li><li>
+<a href="http://sensorapp.net/?p=479">Sharp Dust Sensor and Arduino</a>
+</li></ul>
+
+<h3>Dylos</h3>
+<ul>
+<li>
+<a href="http://www.dylosproducts.com/dcproairqumo.html">DC1100 Pro Air Quality</a>
+</li><li>
+<a href="http://hvac-talk.com/vbb/showthread.php?t=150973">HVAC Talk about DC1100</a>
+</li></ul>
+
+<h3>Grove Dust Sensor</h3>
+<ul>
+<li>
+<a href="http://www.sca-shinyei.com/pdf/PPD42NS.pdf">Dust sensor spec</a>
+</li><li>
+<a href="http://www.seeedstudio.com/depot/grove-dust-sensor-p-1050.html">Seeed Grove Dust Sensor</a>
+</li><li>
+<a href="http://www.epictinker.com/Grove-Dust-Sensor-p/sen12291p.htm">EpicTinker Grove - Dust Sensor</a>
+</li><li>
+<a href="http://www.seeedstudio.com/wiki/Grove_-_Dust_sensor">Grove Dust sensor Wiki</a>
+</li><li>
+<a href="http://sensoren.bfioptilas.de/en/embedfile/537/184/0/0/PPD4NS.Eng.pdf">SHINYEI KAISHA
+ELECTRONIC INSTRUMENTS PPD4NS</a> Interesting Standard test method.
+</li></ul>
+
+<hr>
+<a name="disclaimer"></a>
+<h2>Disclaimer</h2>
+This project is for experimental use only. 
+The user assumes all responsibilities for assembly, installation, and use. 
+This circuit is provided without warranty and the author makes no claim that 
+this device will work in any particular application. 
+Do not use in applications where failure or incorrect operation could jeopardize 
+someone's safety. This schematic is provided for noncommercial use only. 
+
+
+
+</body></html>
