@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)http://www.adeept.com/blog/arduino-pm25-detector_b0026.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102206697-1', 'auto');
+  ga('send', 'pageview');
+
+</script><link rel="shortcut icon" href="http://www.adeept.com/u_file/1707/photo/7747259744.ico">
+<meta name="keywords" content="Arduino PM2.5 detector adeept">
+<meta name="description" content="Arduino PM2.5 detector">
+<title>Arduino PM2.5 detector adeept</title>
+<link href="./Arduino PM2.5 detector adeept_files/global.css" rel="stylesheet" type="text/css">
+<link href="./Arduino PM2.5 detector adeept_files/global(1).css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./Arduino PM2.5 detector adeept_files/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./Arduino PM2.5 detector adeept_files/en.js"></script>
+<script type="text/javascript" src="./Arduino PM2.5 detector adeept_files/global.js"></script>
+<link href="./Arduino PM2.5 detector adeept_files/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./Arduino PM2.5 detector adeept_files/blog.js"></script>
+</head>
+
+<body>
+<div class="wrapper bgWhite">
+	<div id="header" class="w970 clean">
+    <h1 class="fl"></h1>
+    <div class="brief fr"></div>
+</div><!-- end of #header -->    <div class="w970 nav clean">
+	    <div class="item fl"><a href="http://www.adeept.com/" class="fl" target="_blank">Home</a></div>
+        <div class="item fl"><a href="http://www.adeept.com/" class="fl" target="_blank">New</a></div>
+        <div class="item fl"><a href="http://www.adeept.com/" class="fl" target="_blank">Projects</a></div>
+        <div class="item fl"><a href="http://www.adeept.com/" class="fl" target="_blank">Tutorials</a></div>
+    </div><!-- end of .nav -->    <div class="w970 clean overhide">
+    	<div class="lside fl">
+        	<div class="section">
+            	<h2>Arduino PM2.5 detector</h2>
+                <div class="info">By Tom | 24 August 2017 | 0 Comments</div>
+                <div class="content"><span style="font-size:15px;"><span style="font-family:arial;"><strong><span style="font-weight:bold;">Introduction</span></strong></span></span><br>
+<span style="font-size:14px;"><span style="font-family:arial;"><span style="color:#333333;">GP2Y1010AU0F is a dust sensor by optical sensing system. An infrared emitting diode(IRED) and an phototransistor are diagonally arranged into this device. It detects the reflected light of dust in air. Especially, it is effective to detect very fine particle like the cigarette smoke. In addition it can distinguish smoke from house dust by pulse pattem of output voltage. </span></span></span>
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/7e158afe50.png" style="width: 600px;"></div>
+<strong><span style="font-weight:bold;"><span style="font-size:12.0000pt;"><span style="font-family:meiryo ui;">Components</span></span></span></strong><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- </span></span><span style="font-size:11.0000pt;"><span style="font-family:宋体;">1</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">&nbsp;* Adeept UNO R3 Board</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- </span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">1 * </span></span><span style="letter-spacing:0.0000pt;font-weight:normal;text-transform:none;font-style:normal;"><span style="font-size:10.5000pt;"><span style="color:#000000;"><span style="font-family:微软雅黑;">Sharp GP2Y10</span></span></span></span><span style="letter-spacing:0.0000pt;font-weight:normal;text-transform:none;font-style:normal;"><span style="font-size:10.5000pt;"><span style="color:#000000;"><span style="font-family:微软雅黑;">&nbsp;Sensor</span></span></span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- 1 * </span></span><span style="font-family:arial;"><span style="font-size:11.0000pt;">150</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">Ω</span></span>&nbsp;<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">Resistor</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- 1 * </span></span><span style="font-size:11.0000pt;"><span style="font-family:宋体;"><span style="font-family:arial;">220uF</span></span></span>&nbsp;<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">Capacitor</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- 1 * Breadboard</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- </span></span><span style="font-size:11.0000pt;"><span style="font-family:宋体;">1</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">&nbsp;* USB Cable</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- </span></span><span style="font-size:11.0000pt;"><span style="font-family:宋体;">1</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">&nbsp;* </span></span><span style="font-family:arial;"><span style="font-size:11.0000pt;">6</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">-Pin Wires</span></span><br>
+<span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">- </span></span><span style="font-size:11.0000pt;"><span style="font-family:宋体;">3</span></span><span style="font-size:11.0000pt;"><span style="font-family:meiryo ui;">&nbsp;* Jumper Wires</span></span>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/5ec4a969d7.jpg" style="width: 700px;"></div>
+<span style="font-size:15px;"><span style="font-family:arial;"><strong><span style="font-weight:bold;">Experimental Principle </span></strong>&nbsp;</span></span><br>
+<span style="font-size:14px;"><span style="font-family:arial;"><span style="color:#333333;">The optical dust sensor (GP2Y1010AU0F) is particularly effective in detecting very fine particles, such as cigarette smoke, and is a commonly used air purifier system.</span><br>
+<span style="color:#333333;">In the apparatus, an infrared light emitting diode and a phototransistor are arranged diagonally so as to allow them to detect dust reflected light in the air.The sensor has a very low current consumption (maximum 20mA, 11 mA typical), it can carry up to 7VDC sensor. The output is an analog voltage is proportional to the measured dust concentration, the sensitivity of 0.5V / 0.1mg / m3.</span><br>
+<span style="color:#333333;">voltage：5-7V</span><br>
+<span style="color:#333333;">Operating temperature: -10-65 degrees Celsius</span><br>
+<span style="color:#333333;">Current consumption: 20mA max</span><br>
+<span style="color:#333333;">Minimum particle detection: 0.8 micron</span><br>
+<span style="color:#333333;">Sensitivity: 0.5V / (0.1mg / m3)</span><br>
+<span style="color:#333333;">Clean Air Voltage: 0.9V typ</span><br>
+<span style="color:#333333;">Working temperature: -10 ~ 65 ℃</span><br>
+<span style="color:#333333;">Storage temperature: -20 ~ 80 ℃</span><br>
+<span style="color:#333333;">Service life: 5 years</span><br>
+<span style="color:#333333;">Size: 46mm × 30mm × 17.6mm</span><br>
+<span style="color:#333333;">Weight: 15g</span></span></span>
+
+<div style="text-align: center;"><span style="font-size:14px;"><span style="font-family:arial;"><span style="color:#333333;"><img alt="" src="./Arduino PM2.5 detector adeept_files/63da64f1b9.png"></span></span></span></div>
+<span style="font-size:14px;"><span style="font-family:arial;"><span style="color:#333333;">Internal schematic</span></span></span>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/6620b58c07.png" style="width: 633px; height: 351px;"></div>
+<span style="font-size:12.0000pt;"><span style="color:#333333;"><span style="font-family:宋体;">Outline Dimensions</span></span></span>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/85318388c1.png"></div>
+<span style="font-family:arial;"><strong><span style="font-weight:bold;"><span style="font-size:12.0000pt;">Experimental Procedures</span></span></strong><br>
+<span style="font-size:14px;"><strong><span style="font-weight:bold;"><span style="color:#333333;">Step 1:</span></span></strong><span style="color:#333333;">&nbsp;Build the circuit</span></span></span>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/9770feae06.png" style="width: 700px;"></div>
+<span style="font-size:14px;"><strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:arial;">Step </span></span></span></strong><strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:宋体;">2</span></span></span></strong><strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:arial;">:</span></span></span></strong><span style="color:#333333;"><span style="font-family:arial;">&nbsp;Program</span><span style="font-family:宋体;">&nbsp;&nbsp;<span style="font-family:arial;">HallSensorModule.ino</span></span></span><br>
+<span style="color:#808080;">&nbsp;/***********************************************************<br>
+File name: GP2.ino<br>
+Description: &nbsp;Use the GP2 sensor to detect the environment<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;you will see the data in the serial monitor&nbsp;<br>
+Website: </span><span style="color:#0000FF;">www.adeept.com</span><br>
+<span style="color:#808080;">E-mail: </span><span style="color:#0000FF;">support@adeept.com</span><br>
+<span style="color:#808080;">Author: Tom<br>
+Date: 2016/12/27&nbsp;<br>
+***********************************************************/</span><br>
+&nbsp;<span style="color:#008000;">#define</span> PIN_DATA_OUT A0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#808080;">//Connect the IO port of the GP2 sensor analog A0 output</span><br>
+&nbsp;<span style="color:#008000;">#define</span> PIN_LED_VCC 2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#808080;">//The pin in the GP2 sensor that supplies power to the internal Led</span><br>
+&nbsp;<span style="color:#00FFFF;">const int</span> DELAY_BEFORE_SAMPLING = 280; <span style="color:#808080;">//Waiting time before sampling</span><br>
+&nbsp;<span style="color:#00FFFF;">const int</span> DELAY_AFTER_SAMPLING = 40; &nbsp; &nbsp; <span style="color:#808080;">//Wait time after sampling</span><br>
+<span style="color:#00FFFF;">&nbsp;const int</span> DELAY_LED_OFF = 9680; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#808080;">//Intervals</span><br>
+<br>
+<span style="color:#808080;">/**<br>
+&nbsp;* Read the GP2 sensor output voltage<br>
+*/</span><br>
+<span style="color:#00FFFF;">double</span> <span style="color:#FF0000;">getOutputV</span>() {<br>
+&nbsp; <span style="color:#FF0000;">digitalWrite</span>(PIN_LED_VCC, LOW);<br>
+&nbsp; <span style="color:#FF0000;">delayMicroseconds</span>(DELAY_BEFORE_SAMPLING);<br>
+&nbsp;<span style="color:#00FFFF;"> double</span>&nbsp;analogOutput = analogRead(PIN_DATA_OUT);<br>
+&nbsp; <span style="color:#FF0000;">delayMicroseconds</span>(DELAY_AFTER_SAMPLING);<br>
+&nbsp; <span style="color:#FF0000;">digitalWrite</span>(PIN_LED_VCC, <span style="color:#00FFFF;">HIGH</span>);<br>
+&nbsp; <span style="color:#FF0000;">delayMicroseconds</span>(DELAY_LED_OFF);<br>
+&nbsp;<span style="color:#808080;"> //Arduino analog read value range is 0 ~ 1023, the following conversion is 0 ~ 5v</span><br>
+&nbsp; <span style="color:#00FFFF;">double</span> outputV = analogOutput / 1024 * 5;<br>
+&nbsp; <span style="color:#00FFFF;">return</span> outputV;<br>
+}<br>
+<br>
+<span style="color:#808080;">/**<br>
+&nbsp; &nbsp;Calculate the dust density based on the output voltage<br>
+*/</span><br>
+<span style="color:#00FFFF;">double</span> <span style="color:#FF0000;">getDustDensity</span>(<span style="color:#00FFFF;">double</span> outputV) {<br>
+&nbsp; <span style="color:#808080;">//Output voltage and dust density conversion formula: ug / m3 = (V - 0.9) / 5 * 1000</span><br>
+&nbsp; <span style="color:#00FFFF;">double</span> ugm3 = (outputV - 0.9) / 5 * 1000;<br>
+&nbsp; <span style="color:#808080;">//Remove the undetected range</span><br>
+&nbsp; <span style="color:#008000;">if</span> (ugm3 &lt; 0) {<br>
+&nbsp; &nbsp; ugm3 = 0;<br>
+&nbsp; }<br>
+&nbsp; <span style="color:#008000;">return</span> ugm3;<br>
+}<br>
+<br>
+<span style="color:#808080;">/**<br>
+&nbsp; &nbsp;Calculate AQI based on dust density<br>
+&nbsp; &nbsp;Environmental air quality index (AQI) technical requirements (Trial)<br>
+&nbsp;*/</span><br>
+<span style="color:#00FFFF;">double</span> <span style="color:#FF0000;">getAQI</span>(<span style="color:#00FFFF;">double </span>ugm3) {<br>
+&nbsp; <span style="color:#00FFFF;">double</span> aqiL = 0;<br>
+&nbsp; <span style="color:#00FFFF;">double</span> aqiH = 0;<br>
+&nbsp; <span style="color:#00FFFF;">double</span> bpL = 0;<br>
+&nbsp; <span style="color:#00FFFF;">double </span>bpH = 0;<br>
+&nbsp;<span style="color:#00FFFF;"> double </span>aqi = 0;<br>
+&nbsp;<span style="color:#808080;"> //According to the correspondence between pm2.5 and aqi were calculated aqi</span><br>
+&nbsp; <span style="color:#008000;">if </span>(ugm3 &gt;= 0 &amp;&amp; ugm3 &lt;= 35) {<br>
+&nbsp; &nbsp; aqiL = 0;<br>
+&nbsp; &nbsp; aqiH = 50;<br>
+&nbsp; &nbsp; bpL = 0;<br>
+&nbsp; &nbsp; bpH = 35;<br>
+&nbsp; }<span style="color:#008000;"> else if</span> (ugm3 &gt; 35 &amp;&amp; ugm3 &lt;= 75) {<br>
+&nbsp; &nbsp; aqiL = 50;<br>
+&nbsp; &nbsp; aqiH = 100;<br>
+&nbsp; &nbsp; bpL = 35;<br>
+&nbsp; &nbsp; bpH = 75;<br>
+&nbsp; } <span style="color:#008000;">else if</span> (ugm3 &gt; 75 &amp;&amp; ugm3 &lt;= 115) {<br>
+&nbsp; &nbsp; aqiL = 100;<br>
+&nbsp; &nbsp; aqiH = 150;<br>
+&nbsp; &nbsp; bpL = 75;<br>
+&nbsp; &nbsp; bpH = 115;<br>
+&nbsp; } <span style="color:#008000;">else if </span>(ugm3 &gt; 115 &amp;&amp; ugm3 &lt;= 150) {<br>
+&nbsp; &nbsp; aqiL = 150;<br>
+&nbsp; &nbsp; aqiH = 200;<br>
+&nbsp; &nbsp; bpL = 115;<br>
+&nbsp; &nbsp; bpH = 150;<br>
+&nbsp; } <span style="color:#008000;">else if</span> (ugm3 &gt; 150 &amp;&amp; ugm3 &lt;= 250) {<br>
+&nbsp; &nbsp; aqiL = 200;<br>
+&nbsp; &nbsp; aqiH = 300;<br>
+&nbsp; &nbsp; bpL = 150;<br>
+&nbsp; &nbsp; bpH = 250;<br>
+&nbsp; }<span style="color:#008000;"> else if </span>(ugm3 &gt; 250 &amp;&amp; ugm3 &lt;= 350) {<br>
+&nbsp; &nbsp; aqiL = 300;<br>
+&nbsp; &nbsp; aqiH = 400;<br>
+&nbsp; &nbsp; bpL = 250;<br>
+&nbsp; &nbsp; bpH = 350;<br>
+&nbsp; } <span style="color:#008000;">else if </span>(ugm3 &gt; 350) {<br>
+&nbsp; &nbsp; aqiL = 400;<br>
+&nbsp; &nbsp; aqiH = 500;<br>
+&nbsp; &nbsp; bpL = 350;<br>
+&nbsp; &nbsp; bpH = 500;<br>
+&nbsp; }<br>
+&nbsp; <span style="color:#808080;">//formula: aqi = (aqiH - aqiL) / (bpH - bpL) * (desity - bpL) + aqiL;</span><br>
+&nbsp; aqi = (aqiH - aqiL) / (bpH - bpL) * (ugm3 - bpL) + aqiL;<br>
+&nbsp;<span style="color:#008000;"> return</span> aqi;<br>
+}<br>
+<br>
+<span style="color:#808080;">/**<br>
+&nbsp; &nbsp;According to aqi access level description<br>
+*/</span><br>
+<span style="color:#00FFFF;">String</span> <span style="color:#FF0000;">getGradeInfo</span>(<span style="color:#00FFFF;">double</span> aqi) {<br>
+&nbsp; <span style="color:#00FFFF;">String</span> gradeInfo;<br>
+&nbsp; <span style="color:#008000;">if </span>(aqi &gt;= 0 &amp;&amp; aqi &lt;= 50) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Perfect"</span>);<br>
+&nbsp; } <span style="color:#008000;">else if</span> (aqi &gt; 50 &amp;&amp; aqi &lt;= 100) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Good"</span>);<br>
+&nbsp; } <span style="color:#008000;">else if</span> (aqi &gt; 100 &amp;&amp; aqi &lt;= 150) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Mild polluted"</span>);<br>
+&nbsp; } <span style="color:#008000;">else if</span> (aqi &gt; 150 &amp;&amp; aqi &lt;= 200) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Medium polluted"</span>);<br>
+&nbsp; } <span style="color:#008000;">else if</span> (aqi &gt; 200 &amp;&amp; aqi &lt;= 300) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Heavily polluted"</span>);<br>
+&nbsp; }<span style="color:#008000;"> else if</span> (aqi &gt; 300 &amp;&amp; aqi &lt;= 500) {<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Severely polluted"</span>);<br>
+&nbsp; } <span style="color:#008000;">else </span>{<br>
+&nbsp; &nbsp; gradeInfo = <span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"Broken roof!!!"</span>);<br>
+&nbsp; }<br>
+&nbsp; <span style="color:#008000;">return</span> gradeInfo;<br>
+}<br>
+<br>
+<span style="color:#00FFFF;">void</span> <span style="color:#008000;">setup</span>() {<br>
+&nbsp; <span style="color:#FF0000;">Serial.begin</span>(115200);<br>
+&nbsp;<span style="color:#FF0000;"> pinMode</span>(PIN_DATA_OUT, <span style="color:#00FFFF;">INPUT</span>); <span style="color:#808080;">//Defined as input (ADC reads 1analog)</span><br>
+&nbsp; <span style="color:#FF0000;">pinMode</span>(PIN_LED_VCC, <span style="color:#00FFFF;">OUTPUT</span>); <span style="color:#808080;">//Defined as output</span><br>
+}<br>
+<br>
+<span style="color:#00FFFF;">void</span> <span style="color:#008000;">loop</span>() {<br>
+&nbsp; <span style="color:#00FFFF;">double</span> outputV = <span style="color:#FF0000;">getOutputV</span>(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#808080;">//Sampling Get the output voltage</span><br>
+&nbsp; <span style="color:#00FFFF;">double</span> ugm3 = <span style="color:#FF0000;">getDustDensity</span>(outputV); <span style="color:#808080;">//Calculate the dust concentration</span><br>
+&nbsp;<span style="color:#00FFFF;"> double</span> aqi = <span style="color:#FF0000;">getAQI</span>(ugm3); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color:#808080;">//Calculate aqi</span><br>
+&nbsp; <span style="color:#00FFFF;">String</span> gradeInfo = <span style="color:#FF0000;">getGradeInfo</span>(aqi); &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#808080;">//Calculate the level</span><br>
+<br>
+&nbsp; <span style="color:#808080;">//Print to the serial port</span><br>
+&nbsp; <span style="color:#FF0000;">Serial.println</span>(<span style="color:#00FFFF;">String</span>(<span style="color:#008080;">"outputV="</span>) + outputV + <span style="color:#008080;">"\tug/m3="</span> + ugm3 + <span style="color:#008080;">"\tAQI="</span> + aqi +<span style="color:#008080;"> "\tgradeInfo=" </span>+ gradeInfo);<br>
+<br>
+&nbsp;<span style="color:#808080;"> //The next detection is performed every 1 second</span><br>
+&nbsp; <span style="color:#FF0000;">delay</span>(1000);<br>
+}<br>
+<strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:arial;">Step </span></span></span></strong><strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:宋体;">3</span></span></span></strong><strong><span style="font-weight:bold;"><span style="color:#333333;"><span style="font-family:arial;">:</span></span></span></strong><span style="color:#333333;"><span style="font-family:arial;">&nbsp;Compile and download the sketch to the UNO R3 board. </span></span></span>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/e984c17f92.jpg" style="width: 700px;"></div>
+
+<div style="text-align: center;"><img alt="" src="./Arduino PM2.5 detector adeept_files/b9ba57fef3.png" style="width: 600px; height: 461px;"></div></div>
+            </div>
+            <div class="blog_review">
+            	<div class="rev_list">
+                	                </div>
+                <div class="blog_form">
+                	<form id="blog_form">
+                        <div class="title">Leave a Reply</div>
+                        <div class="subtitle">Your email address will not be published.Required fields are marked. <span class="fc_red">*</span></div>
+                        <div class="blog_name">Name <span class="fc_red">*</span></div>
+                        <div class="blog_input"><input type="text" class="text" name="Name" notnull=""></div>
+                        <div class="blog_name">Email <span class="fc_red">*</span></div>
+                        <div class="blog_input"><input type="text" class="text" name="Email" notnull=""></div>
+                        <div class="blog_name">Content</div>
+                        <div class="content"><textarea name="Content" class="textarea" notnull=""></textarea></div>
+                        <div class="submit"><input type="submit" class="btn" name="submit" value="Post Comment"></div>
+                        <input type="hidden" name="AId" value="26">
+                        <input type="hidden" name="do_action" value="action.blog_review">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="rside fr">
+        	<div class="blog_search clean">
+    <form action="http://www.adeept.com/blog/" method="get">
+        <input class="fl btn" type="submit" value="">
+        <input class="fl text" name="Keyword" type="text" placeholder="Search tutorials and articles...">
+        <input type="hidden" name="p" value="list">
+    </form>
+</div>
+<div class="stick">
+    <div class="clean"><div class="title">Popular blog</div></div>
+    <div class="ct">
+        <ul class="rela_list">
+        	            <li><a href="http://www.adeept.com/blog/8x8-led-matrix-module_b0039.html">8x8 LED Matrix Module</a></li>
+                        <li><a href="http://www.adeept.com/blog/adeept-rfid-module-for-uno-r3_b0038.html">Adeept RFID Module For UNO R3</a></li>
+                        <li><a href="http://www.adeept.com/blog/blinking-led_b0037.html">Blinking LED</a></li>
+                        <li><a href="http://www.adeept.com/blog/adeept-2wd-bluetooth-cars-bluetooth-connection_b0036.html">Adeept 2WD Bluetooth Car's Bluetooth connection</a></li>
+                        <li><a href="http://www.adeept.com/blog/the-problems-and-solutions-of-the-car-kit-2_b0035.html">The problems and solutions of the car kit (2)</a></li>
+                    </ul>
+    </div>
+</div>
+<div class="stick">
+    <div class="clean"><div class="title">Archives</div></div>
+    <div class="ct">
+        <ul class="stlist">
+                        <li>• <a href="http://www.adeept.com/blog/c/_0000?date=1501516800">August 2017</a></li>
+                        <li>• <a href="http://www.adeept.com/blog/c/_0000?date=1506787200">October 2017</a></li>
+                    </ul>
+    </div>
+</div>
+<div class="stick">
+    <div class="clean"><div class="title">Categories</div></div>
+    <div class="ct">
+        <ul class="stlist">
+                        <li>• <a href="http://www.adeept.com/blog/c/arduino-car_0022">Arduino Car</a></li>
+                        <li>• <a href="http://www.adeept.com/blog/c/arduno-lesson_0023">arduno Lesson</a></li>
+                        <li>• <a href="http://www.adeept.com/blog/c/arduino-game_0024">arduino game</a></li>
+                        <li>• <a href="http://www.adeept.com/blog/c/arduino-problem_0025">arduino problem</a></li>
+                    </ul>
+    </div>
+</div>        </div>
+    </div>
+    <div id="footer" class="clean w970">
+    <div class="fl">Copyright © 2014-2017 Adeept.com All Rights Reserved.</div>
+    <div class="fr"><a href="http://www.ueeshop.com/" target="_blank">POWERED BY UEESHOP</a></div>
+</div></div>
+
+</body></html>

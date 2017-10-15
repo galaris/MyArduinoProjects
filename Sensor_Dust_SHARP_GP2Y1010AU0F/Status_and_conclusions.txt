@@ -1,0 +1,5 @@
+Using the code in the working folder 1, I was able to get coherent results out of the unit.
+Blowing ecigarette smoke on the unit raised the values output by the program.
+However, otherwise the values went back to 0. Thus it is probably not really sensitive.
+
+I would imagine that a fan is required to circulate air to and from the unit.
